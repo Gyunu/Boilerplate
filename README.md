@@ -1,6 +1,6 @@
 #Boilerplate
 
-This boilerplate is to get up and running quickly with Sass and Webpack.
+This boilerplate is to get up and running quickly with Typescript, Sass and Webpack.
 It requires sass, tslint and webpack CLI to be installed globally.
 
 **Before installation:**  
@@ -9,7 +9,9 @@ It requires sass, tslint and webpack CLI to be installed globally.
 
 **During installation:**
 
-A `src` folder to contain your `js`, `ts` and `sass` files are automatically created, along with a `dist` folder containing `js` and `css` folders that holds the compiled files. `index.html` is also generated, but is empty.
+A `src` folder is created along to hold source files. `src/ts` holds your typescript code, `sass` holds your sass files, `js` holds the typescript compilated files and `fonts` are any fonts that you use.
+
+A `dist` folder is also created to hold your built files, `js` holds the minified js, `css` holds the minified css and `fonts` holds your fonts. An `index.html` file is generated, but is empty - so fill it with your favourite boilerplate.
 
 **Scripts available:**   
 
