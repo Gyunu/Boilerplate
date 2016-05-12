@@ -1,5 +1,5 @@
 {
-  "name": "gyunu boilerplate",
+  "name": "gyunu-boilerplate",
   "version": "1.0.0",
   "description": "A basic webpack and sass boilerplate.",
   "main": "index.js",
