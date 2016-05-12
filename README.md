@@ -1,7 +1,7 @@
 #Boilerplate
 
 This boilerplate is to get up and running quickly with Sass and Webpack.
-It requires sass, jshint and webpack CLI to be installed globally.
+It requires sass, tslint and webpack CLI to be installed globally.
 
 **Before installation:**  
 `npm install -g sass && npm install -g webpack && npm install -g tslint`  
