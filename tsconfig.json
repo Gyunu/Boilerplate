@@ -15,5 +15,8 @@
   ],
   "atom": {
     "rewriteTsconfig": true
-  }
+  },
+  "files": [
+    "./src/ts/index.ts"
+  ]
 }
