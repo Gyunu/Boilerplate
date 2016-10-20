@@ -25,3 +25,9 @@ A `dist` folder is also created to hold your built files, `js` holds the minifie
 It is recommended you use `npm run -s` instead of `npm run` to squash the readback of the scripts. It makes the output easier to read.
 
 The `webpack` config files are for the build `script` and `deployment` script respectively so add in any configuration you like to those files for development or deployment.
+
+To forward standard ports on OSX follow these instructions:
+http://salvatore.garbesi.com/vagrant-port-forwarding-on-mac/
+
+Determine the vagrant ip by sshing into the box and running ifconfig
+then you can use that ip to access the website, or alias it in hosts
