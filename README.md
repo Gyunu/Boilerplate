@@ -6,21 +6,31 @@ It requires sass, tslint and webpack CLI to be installed globally.
 It contains a Vagrant file so you can use vagrant for development if you want.
 Set the project name variable in the Vagrant file and it will be used to name directory structure, synced folder and apache configuration.
 
-**Before installation:**  
-`npm install -g sass && npm install -g webpack && npm install -g tslint`  
+###Installation:
 
+**Installing Vagrant**  
+Change the project and password variables in the `Vagrantfile` to something of your choosing.
+Run `vagrant up` to build the vagrant box using the project name and password for directories, structure and synced folder.
+This folder will be synced to `/var/www/vhosts/[PROJECTNAME]` on the guest.
 
-**During installation:**
+once vagrant is finished (it may take a while depending on your internet speed), `vagrant ssh` into the box and navigate to the vhost directory.
+
+**Installing Node Via NVM**  
+
+Run `nvm ls-remote` and install the latest LTS version of node (this was tested with `v6.9.1`) using `nvm install [VERSION NUMBER]`.
+
+**Installing Front End**  
+
+After you've installed node (using NVM or other) run `npm install` and wait for it to finish. Then run `npm run -s deploy` to get a built version of the boiler plate.
 
 A `src` folder is created along to hold source files. `src/ts` holds your typescript code, `sass` holds your sass files, `js` holds the typescript compilated files and `fonts` are any fonts that you use.
 
 A `dist` folder is also created to hold your built files, `js` holds the minified js, `css` holds the minified css and `fonts` holds your fonts. An `index.html` file is generated, but is empty - so fill it with your favourite boilerplate.
 
-After it all installs, use `nvm` to install the latest LTS version of node (tested using `v6.9.1`) and run `npm install` and then `npm run -s deploy` to build the files and have a working index file.
-
 **Scripts available:**   
 
-Check the `package.json` for the list of available commands - the main ones being:
+Check the `package.json` for the list of available commands - the main ones being:  
+
 `npm run build` Builds the current src files with sourcemaps for development.   
 `npm run deploy` Builds the current src files for deployment with no sourcemaps.  
 
