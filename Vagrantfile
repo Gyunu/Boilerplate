@@ -1,11 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+$project = "gyunu"
+$password = "{?quc9]xLnd:hT+("
+
 Vagrant.configure(2) do |config|
 
   config.vm.box = "ubuntu/xenial64"
-  config.vm.provision :shell, path: "bootstrap.sh", privileged: false
+  config.vm.provision :shell, path: "bootstrap.sh", privileged: false, args: [$project, $password]
   config.vm.network :forwarded_port, guest: 80, host: 8080
-  config.vm.synced_folder ".", "/var/www/html"
+  config.vm.synced_folder ".", "/var/www/vhosts/" + $project
 
   config.trigger.after [:provision, :up, :reload] do
       system('echo "

@@ -3,6 +3,9 @@
 This boilerplate is to get up and running quickly with Typescript, Sass and Webpack.
 It requires sass, tslint and webpack CLI to be installed globally.
 
+It contains a Vagrant file so you can use vagrant for development if you want.
+Set the project name variable in the Vagrant file and it will be used to name directory structure, synced folder and apache configuration.
+
 **Before installation:**  
 `npm install -g sass && npm install -g webpack && npm install -g tslint`  
 
@@ -13,8 +16,11 @@ A `src` folder is created along to hold source files. `src/ts` holds your typesc
 
 A `dist` folder is also created to hold your built files, `js` holds the minified js, `css` holds the minified css and `fonts` holds your fonts. An `index.html` file is generated, but is empty - so fill it with your favourite boilerplate.
 
+After it all installs, use `nvm` to install the latest LTS version of node (tested using `v6.9.1`) and run `npm install` and then `npm run -s deploy` to build the files and have a working index file.
+
 **Scripts available:**   
 
+Check the `package.json` for the list of available commands - the main ones being:
 `npm run build` Builds the current src files with sourcemaps for development.   
 `npm run deploy` Builds the current src files for deployment with no sourcemaps.  
 
