@@ -2,7 +2,7 @@
 	.bg--#{$name} {
 		background-color: $color;
 		&-i {
-			color: $color !important;
+			background-color: $color !important;
 		}
 	}
 
