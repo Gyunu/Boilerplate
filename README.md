@@ -9,11 +9,8 @@ Set the project name variable in the Vagrant file and it will be used to name di
 ###Installation:
 
 **Installing Vagrant**  
-Change the project and password variables in the `Vagrantfile` to something of your choosing.
-Run `vagrant up` to build the vagrant box using the project name and password for directories, structure and synced folder.
-This folder will be synced to `/var/www/vhosts/[PROJECTNAME]` on the guest.
-
-once vagrant is finished (it may take a while depending on your internet speed), `vagrant ssh` into the box and navigate to the vhost directory.
+Run `vagrant up` and when prompted, fill in the configuration settings. This will make setting up apache2, mysql and your hosts file
+redirection much more simple. Seriously, it's easy. Once it's done, you can `ssh` into the box using `vagrant ssh`.
 
 **Installing Node Via NVM**  
 
@@ -21,7 +18,7 @@ Run `nvm ls-remote` and install the latest LTS version of node (this was tested 
 
 **Installing Front End**  
 
-After you've installed node (using NVM or other) run `npm install` and wait for it to finish. Then run `npm run -s deploy` to get a built version of the boiler plate.
+After you've installed node (using NVM or other) run `npm install` and wait for it to finish. Then run `npm run -s deploy` to get a built version of the boilerplate.
 
 A `src` folder is created along to hold source files. `src/ts` holds your typescript code, `sass` holds your sass files, `js` holds the typescript compilated files and `fonts` are any fonts that you use.
 
@@ -44,6 +41,3 @@ The `webpack` config files are for the build `script` and `deployment` script re
 
 To forward standard ports on OSX follow these instructions:
 http://salvatore.garbesi.com/vagrant-port-forwarding-on-mac/
-
-Determine the vagrant ip by sshing into the box and running ifconfig
-then you can use that ip to access the website, or alias it in hosts

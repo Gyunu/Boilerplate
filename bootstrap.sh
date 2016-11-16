@@ -15,7 +15,7 @@ sudo mkdir -p "${PROJECTFOLDER}"
 
 # update / upgrade
 sudo apt-get update
-sudo apt-get -y upgrade
+# sudo apt-get -y upgrade
 
 # install mysql and give password to installer
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"
@@ -26,6 +26,8 @@ sudo apt-get -y install mysql-server
 sudo apt-get install -y apache2
 sudo apt-get install -y php libapache2-mod-php php-mcrypt php-mysql
 
+# install composer
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
 
 # setup hosts file
 sudo cat <<EOF | sudo tee /etc/apache2/sites-available/$PROJECTFOLDER.conf
@@ -50,7 +52,7 @@ sudo a2ensite $PROJECTFOLDER.conf
 sudo a2dissite 000-default.conf
 
 # restart apache
-service apache2 restart
+sudo service apache2 restart
 
 # install git
 sudo apt-get -y install git
