@@ -9,7 +9,6 @@ export module Modal {
   }
 
   export function show(header: string, message: string, ok: Function, cancel: Function) {
-    console.log(modalContainer);
       if(modalContainer) {
 
         let modal = document.createElement('div');
