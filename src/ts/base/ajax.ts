@@ -1,8 +1,10 @@
 import { Popup } from "./popup";
+import { CurrentLanguage } from "../lang";
 
 export module Ajax {
+  function request(verb: string, data: Object, url: string, next: Function) {
+    next = next || function() {};
 
-  function request(verb: string, url: string, next: Function) {
     var request = new XMLHttpRequest();
     request.open(verb, url, true);
 
@@ -17,12 +19,13 @@ export module Ajax {
           status = request.status;
           message = request.statusText;
           data = JSON.parse(request.responseText);
-          Popup.show(Popup.Type.SUCCESS, 'Success', request.statusText);
+          Popup.show(Popup.Type.SUCCESS, CurrentLanguage.status.success, request.statusText);
         }
         catch(e) {
           status = request.status;
           data = null;
-          Popup.show(Popup.Type.ERROR, 'ERROR', 'The server responded with bad data.');
+          Popup.show(Popup.Type.ERROR, CurrentLanguage.status.error, CurrentLanguage.ajax.server.badData);
+          return;
         }
         next(null, {
           status: request.status,
@@ -30,18 +33,17 @@ export module Ajax {
           data: JSON.parse(request.responseText)
         });
       } else {
-        Popup.show(Popup.Type.ERROR, 'Error', request.statusText);
+        Popup.show(Popup.Type.ERROR, CurrentLanguage.status.error, request.statusText);
         next({
           status: request.status,
           message: request.statusText,
           data: null
           }, null);
-
       }
     };
 
     request.onerror = function() {
-      Popup.show(Popup.Type.ERROR, 'Error', 'No connection found');
+      Popup.show(Popup.Type.ERROR, CurrentLanguage.status.error, CurrentLanguage.ajax.connection.noConnection);
       next({
         status: null,
         message: 'connection error',
@@ -49,33 +51,60 @@ export module Ajax {
       }, null);
     };
 
-    request.send();
+    try {
+      request.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+      request.send(data);
+      return;
+    }
+    catch(e) {
+      Popup.show(Popup.Type.ERROR, CurrentLanguage.status.error, CurrentLanguage.ajax.server.noResponse);
+    }
   }
 
-  export function post(url: string, next: Function) {
-    request('POST', url, next);
+  export function post(url: string, data: Object, next?: Function) {
+    data = transformToJSON(data);
+    if(data) {
+      request('POST', data, url, next);
+    }
   }
 
-  export function get(url: string, next: Function) {
-    request('GET', url, next);
+  export function get(url: string, next?: Function) {
+    request('GET', null, url, next);
   }
 
   //delete is a reserved word
-  export function remove(url: string, next: Function) {
-    request('DELETE', url, next);
+  export function remove(url: string, next?: Function) {
+    request('DELETE', null, url, next);
   }
 
-  export function put(url: string, next: Function) {
-    request('PUT', url, next);
+  export function put(url: string, data: Object, next?: Function) {
+    data = transformToJSON(data);
+    if(data) {
+      request('PUT', data, url, next);
+    }
   }
 
-  export function update(url: string, next: Function) {
-    request('UPDATE', url, next);
+  export function update(url: string, data: Object, next?: Function) {
+    request('UPDATE', data, url, next);
   }
 
-  export function patch(url: string, next: Function) {
-    request('PATCH', url, next);
+  export function patch(url: string, data: Object, next?: Function) {
+
+    data = transformToJSON(data);
+    if(data) {
+      request('PATCH', data, url, next);
+    }
   }
 
+  function transformToJSON(data) {
+    try {
+      data = JSON.stringify(data);
+      return data;
+    }
+    catch (e) {
+      Popup.show(Popup.Type.ERROR, CurrentLanguage.status.error, CurrentLanguage.ajax.request.badRequest);
+      return null;
+    }
+  }
 
 }
