@@ -16,7 +16,6 @@ end
 
 if project_config['ip'] == nil
 	puts "Enter a vacant IP Address (the last 3 digits only)"
-	ip = STDN.gets.chomp;
 	project_config['ip'] = "192.168.50." + STDIN.gets.chomp
 end
 
