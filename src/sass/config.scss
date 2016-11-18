@@ -15,8 +15,8 @@
 /// It's used in a variety of mixins to generate classes for fonts
 /// Access properties where needed with map-get($fonts, 'property')
 $fonts: (
-  'light': 'rotis-sans-light',
-  'regular': 'rotis-sans-regular'
+  'light': '',
+  'regular': ''
 );
 
 
