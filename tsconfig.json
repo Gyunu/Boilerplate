@@ -17,6 +17,12 @@
     "rewriteTsconfig": true
   },
   "files": [
-    "./src/ts/index.ts"
+    "./src/ts/base/ajax.ts",
+    "./src/ts/base/modal.ts",
+    "./src/ts/base/popup.ts",
+    "./src/ts/config.ts",
+    "./src/ts/index.ts",
+    "./src/ts/lang/en.lang.ts",
+    "./src/ts/lang/index.ts"
   ]
 }

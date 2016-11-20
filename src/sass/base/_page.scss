@@ -1,0 +1,71 @@
+main {
+  @include bg('black', 1, 'dark');
+
+  header {
+    @include p('h', 'xl');
+    @include p('v', 'm');
+    @include m('b', 'xl');
+    @include bg('black');
+    @include clr('white');
+    @include cf;
+    @include col($columns);
+    @include layer(1);
+    line-height: 1;
+    position: relative;
+
+    h1 {
+      @include m('h', 'n');
+      @include m('v', 'm');
+      @include text('xl');
+      float: left;
+    }
+
+    p {
+      @include text('m');
+    }
+
+    .buttons {
+      @include m('t', 's');
+      float: right;
+
+      button {
+        @include m('u', 'n');
+      }
+    }
+  }
+
+  section {
+    @include m('h', 'xl');
+    @include p('u', 'xxxl');
+    @include p('t', 'xxl');
+    @include bg('white');
+    @include layer(10);
+    position: relative;
+
+    header {
+      @include m('b', 'l');
+      @include p('u', 'n');
+      @include bg('white');
+      @include clr('black');
+      @include shadow(0, 0, 'n');
+      position: relative;
+
+      h1 {
+        @include text('xl');
+        @include m('t', 'm');
+      }
+    }
+
+    footer {
+      @include bg('white');
+      @include clr('black');
+    }
+  }
+
+  footer {
+    @include bg('black');
+    @include clr('white');
+    @include p('u', 'xl');
+    @include m('t', 'xl');
+  }
+}

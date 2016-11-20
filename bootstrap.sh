@@ -15,7 +15,7 @@ sudo mkdir -p "${PROJECTFOLDER}"
 
 # update / upgrade
 sudo apt-get update
-# sudo apt-get -y upgrade
+sudo apt-get -y upgrade
 
 # install mysql and give password to installer
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password $PASSWORD"

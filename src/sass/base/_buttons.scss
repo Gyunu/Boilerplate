@@ -1,70 +1,73 @@
+a.btn {
+  //anchor tags need a line height.
+  line-height: 1.7;
+}
+
 .btn {
-	@include p('v', 'm');
-	@include p('h', 'l');
-	@include m('b', 'xl');
-	@include bg('black-lighter');
-	@include clr('white');
-	@include bdr('n', 'transparent');
-	height         : 60px;
-	display        : inline-block;
-	line-height    : 2;
-	vertical-align : middle;
-	text-decoration: none;
+  @include p('v', 'xs');
+  @include p('h', 'm');
+  @include m('b', 'xl');
+  @include bg('black');
+  @include clr('white');
+  @include bdr('n', 'transparent');
+  @include rad('u', 'xs');
+  @include text('m');
+  display: inline-block;
+  height: 40px;
+  line-height: 0;
+  text-decoration: none;
+  vertical-align: middle;
 
-	&:before {
-		@include m('u', 'n');
-		width  : 0;
-		content: '';
-	}
+  &::before {
+    @include m('u', 'n');
+    content: '';
+    width: 0;
+  }
 
-	&:hover {
-		@include bg('black');
-	}
+  &:hover {
+    @include bg('white');
+    @include clr('black');
+  }
 
-	.ion {
-		@include m('r', 'm');
-	}
+  .ion {
+    @include m('r', 's');
+  }
 
-	&--outline {
-		@include bg('none');
-		@include clr('white');
-		@include bdr('u', 'white');
+  &--outline {
+    @include bg('none');
+    @include clr('white');
+    @include bdr('u', 'white');
 
-		&:hover {
-			@include bg('white');
-			@include clr('black');
-		}
-	}
+    &:hover {
+      @include bg('white');
+      @include clr('black');
+    }
+  }
 
-	&--inverse {
-		@include bg('white');
-		@include clr('black');
-		@include bdr('u', 'none');
+  &--inverse {
+    @include bg('white');
+    @include clr('black');
+    @include bdr('u', 'black');
 
-		&:hover {
-			@include bg('black');
-			@include clr('white');
-		}
-	}
+    &:hover {
+      @include bg('black');
+      @include clr('white');
+      @include bdr('u', 'white');
+    }
+  }
 
-	&--light {
-		@include bg('white');
-		@include clr('black');
+  @each $name, $color in $colors {
+    &--#{$name} {
+      @include clr('white');
+      @include bdr('u', 'none');
+      @include bg($name);
 
-		&:hover {
-			@include bg('black');
-			@include clr('white');
-		}
 
-		&.btn--inverse {
-			@include bg('black');
-			@include clr('white');
-			@include bdr('u', 'white');
-
-			&:hover {
-				@include bg('white');
-				@include clr('black');
-			}
-		}
-	}
+      &:hover {
+        @include bg($name, 1, 'dark');
+        @include bdr('u', 'none');
+        @include clr('white');
+      }
+    }
+  }
 }
